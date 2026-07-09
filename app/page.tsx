@@ -80,9 +80,14 @@ const features = [
   { icon: Tent, title: "Kamp Alanı" },
 ];
 
-const galleryImages = Array.from({ length: 40 }, (_, i) => ({
-  src: `/images/galeri-${i + 1}.jpg`,
-  alt: `ÇELTUR ${i + 1}`,
+const featuredOrder = [27, 16, 12, 34, 9, 29, 3, 7, 11];
+const allNumbers = Array.from({ length: 40 }, (_, i) => i + 1);
+const remainingOrder = allNumbers.filter((n) => !featuredOrder.includes(n));
+const finalOrder = [...featuredOrder, ...remainingOrder];
+
+const galleryImages = finalOrder.map((num) => ({
+  src: `/images/galeri-${num}.jpg`,
+  alt: `ÇELTUR ${num}`,
 }));
 
 export default function CelturPage() {
